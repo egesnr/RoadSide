@@ -1,28 +1,49 @@
-.App {
-  text-align: center;
+/* Reset default list styles */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-
-
-
-.App-header {
-  background-image: url('C:\Users\Ege\Desktop\RoadSide\dalle.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  min-height: 100vh;
+/* Style for the navigation bar */
+.header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  /*justify-content: center;*/
-  font-size: calc(10px + 2vmin);
-  color: black;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.App-link {
-  color: #61dafb;
+/* Style for the logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
+/* Style for the navigation links */
+.navigation {
+  display: flex;
+  align-items: center;
+}
 
+.logo-image {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain the aspect ratio */
+}
+.nav-list {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333333;
+  font-weight: bold;
+  margin-right: 20px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #007bff;
 }
