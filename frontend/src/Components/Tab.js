@@ -1,4 +1,5 @@
-import * as React from 'react';
+// Tab.js
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -38,8 +39,8 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+export default function BasicTabs({ children }) {
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -47,38 +48,37 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'background.paper'  }}>
-      <Tabs value={value} onChange={handleChange} centered 
-      TabIndicatorProps={{
-        style: {
-          backgroundColor: 'white', // Change the tab indicator color
-        },
-      }}
-      sx={{ color: 'white' }} // Change the tab text color
-      >
-          <Tab 
-          label="Item One"
-          {...a11yProps(0)}
-          sx={{
-            backgroundColor: value === 0 ? 'gray' : '',
-            color: value === 0 ? 'white' : 'inherit',
-            borderRadius: '5', // Add square border radius
+      <Box sx={{ borderBottom: 1, borderColor: 'background.paper' }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          centered
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: 'white', // Change the tab indicator color
+            },
           }}
-          {...a11yProps(0)} 
+          sx={{ color: 'white' }} // Change the tab text color
+        >
+          <Tab
+            label="Row Truck"
+            {...a11yProps(0)}
+            sx={{
+              backgroundColor: value === 0 ? 'gray' : '',
+              color: value === 0 ? 'white' : 'inherit',
+              borderRadius: '5', // Add square border radius
+            }}
+            {...a11yProps(0)}
           />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Mobile Wheel" {...a11yProps(1)} />
+          <Tab label="Car Repair" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        Item One
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        Item Two
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
-        Item Three
-      </CustomTabPanel>
+      {React.Children.map(children, (child, index) => (
+        <CustomTabPanel key={index} value={value} index={index}>
+          {child}
+        </CustomTabPanel>
+      ))}
     </Box>
   );
 }
